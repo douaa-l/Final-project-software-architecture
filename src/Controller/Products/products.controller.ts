@@ -1,36 +1,39 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException } from '@nestjs/common';
+import { getEnabledCategories } from 'trace_events';
 import { ProductsService } from '../../Service/Products/products.service';
+import { UsersService } from '../../Service/Users/users.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-//import {UserService}  from './../../Service/Users/users.service'
-
+//import User from './../../Model/User/entities/user.entity'
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService,
+  ) {}
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
-
-  @Get()
+  @Get('/categorie:id')
   async  findAll(@Param('id') id: string){
-  //  const user = await UserService.findOne({id})
+   const  categorie = await this.productsService.findCategorie(id)
+    
+  
+  var str = JSON.stringify(categorie);
+  console.log(str);
+    
+   return await this.productsService.findByCategorie(await this.productsService.findCategorie(id))
    
-    //if(!user)
-   //{
-    // throw new BadRequestException("invalide credintials!")
-   //}
-   const categorie="SmartPhon"//user.categorie
-   const products = await this.productsService.findByCategorie({categorie})
-   
-   return products;
+  
   }
+  
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
-  }
+  
+
+  //@Get(':id')
+  //findOne(@Param('id') id: string) {
+   // return this.productsService.findOne(+id);
+  //}
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
@@ -41,4 +44,16 @@ export class ProductsController {
   remove(@Param('id') id: string) {
     return this.productsService.remove(+id);
   }
+  @Get('/:id')
+  async  findAlll(@Param('id') id: string){
+   const  categorie = await this.productsService.findCategorie(id)
+    
+  
+  var str = JSON.stringify(categorie);
+ 
+    
+   return await this.productsService.findByCategorie("Vetement")
+   
+  
+  }  
 }

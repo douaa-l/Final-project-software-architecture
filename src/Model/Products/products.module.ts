@@ -4,6 +4,9 @@ import { ProductsController } from '../../Controller/Products/products.controlle
 import { HttpModule } from '@nestjs/axios'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
+import {  } from './entities/product.entity';
+import { UsersController } from 'src/Controller/User/users.controller';
+import { UsersService } from 'src/Service/Users/users.service';
 @Module({
   controllers: [ProductsController],
   providers: [ProductsService],

@@ -28,8 +28,8 @@ export class UsersService {
        util.email= createUserDto.email
        util.num_tel= createUserDto.num_tel
        util.mdp= pass
-       console.log(this.httpService.get('http://localhost:3002/users').pipe(
-        map(response => response.data)))
+       this.httpService.get('http://localhost:3002/users').pipe(
+        map(response => response.data))
      return this.usersRepository.save(util);
   }
 
