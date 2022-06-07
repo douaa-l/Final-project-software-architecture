@@ -4,10 +4,10 @@ export const  config : TypeOrmModuleOptions  ={
     type :'postgres',
     port : 5432,
     host : '127.0.0.1',
-    database :'parkina',
+    database :'alog',
     synchronize: true,
     username : 'postgres', 
-    password : '32ANFEL1502',
+    password : 'root',
    
     entities: [join(__dirname, '**', '*.entity.{ts,js}')]
 }

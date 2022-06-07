@@ -29,7 +29,7 @@ export class ProductsService {
       
      return this.httpService
   
-     .get('https://a63f-41-109-41-79.eu.ngrok.io/products/'+condition)
+     .get('https://2029-129-45-34-140.eu.ngrok.io/products/'+condition)
      .pipe(
         map(response => response.data)
         )
@@ -39,7 +39,7 @@ export class ProductsService {
    {  
         console.log(condition)
         return await this.httpService
-        .get('https://a63f-41-109-41-79.eu.ngrok.io/users/'+condition)
+        .get('https://2029-129-45-34-140.eu.ngrok.io/users/'+condition)
         
         .pipe(
           map(response => response.data)
